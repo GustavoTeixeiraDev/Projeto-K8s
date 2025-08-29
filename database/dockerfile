@@ -1,0 +1,13 @@
+FROM mysql:5.7
+
+WORKDIR /var/lib/mysql/
+
+# Ajuste a senha se no seu exemplo for "Senha12;" (com ponto e vírgula).
+# Aqui usei "Senha12;" para ficar idêntico ao print.
+ENV MYSQL_ROOT_PASSWORD=Senha12;
+ENV MYSQL_DATABASE=meubanco
+
+# Executa no primeiro start do container
+ADD sql.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
